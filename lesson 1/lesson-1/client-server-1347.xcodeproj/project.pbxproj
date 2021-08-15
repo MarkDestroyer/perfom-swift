@@ -25,6 +25,10 @@
 		8258BB6926C5DC420080AFF9 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6826C5DC420080AFF9 /* spring.mp3 */; };
 		8258BB6B26C5DE5B0080AFF9 /* spring2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */; };
 		8258BB6D26C5E1F10080AFF9 /* shrek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */; };
+		826786D626C9B1BE000A08D8 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826786D226C9B1BE000A08D8 /* NewsCollectionViewCell.xib */; };
+		826786D726C9B1BE000A08D8 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826786D326C9B1BE000A08D8 /* NewsCollectionViewCell.swift */; };
+		826786D826C9B1BE000A08D8 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826786D426C9B1BE000A08D8 /* NewsTableViewCell.xib */; };
+		826786D926C9B1BE000A08D8 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826786D526C9B1BE000A08D8 /* NewsTableViewCell.swift */; };
 		828BD71126C1CC1C00953CBD /* hz.gif in Resources */ = {isa = PBXBuildFile; fileRef = 828BD71026C1CC1C00953CBD /* hz.gif */; };
 		828D504E26A648E900408176 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D504D26A648E900408176 /* FriendsTableViewController.swift */; };
 		828D505026A6560B00408176 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828D504F26A6560B00408176 /* GroupsTableViewController.swift */; };
@@ -72,6 +76,10 @@
 		8258BB6826C5DC420080AFF9 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring2.mp3; sourceTree = "<group>"; };
 		8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shrek.mp3; sourceTree = "<group>"; };
+		826786D226C9B1BE000A08D8 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		826786D326C9B1BE000A08D8 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		826786D426C9B1BE000A08D8 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		826786D526C9B1BE000A08D8 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		828BD71026C1CC1C00953CBD /* hz.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hz.gif; sourceTree = "<group>"; };
 		828D504D26A648E900408176 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		828D504F26A6560B00408176 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +285,10 @@
 				82E57ADE26C05F0300DA85A5 /* GroupTableViewCellNoDesc.swift */,
 				82E57AEF26C078C500DA85A5 /* FeedTableViewCell.swift */,
 				82AA52E326C35C7000074695 /* FriendsTableViewCell.swift */,
+				826786D326C9B1BE000A08D8 /* NewsCollectionViewCell.swift */,
+				826786D226C9B1BE000A08D8 /* NewsCollectionViewCell.xib */,
+				826786D526C9B1BE000A08D8 /* NewsTableViewCell.swift */,
+				826786D426C9B1BE000A08D8 /* NewsTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -352,7 +364,9 @@
 				1273D10F269377CE003F2E68 /* LaunchScreen.storyboard in Resources */,
 				82B316C326B61C740039A274 /* GoogleService-Info.plist in Resources */,
 				8258BB6B26C5DE5B0080AFF9 /* spring2.mp3 in Resources */,
+				826786D826C9B1BE000A08D8 /* NewsTableViewCell.xib in Resources */,
 				8258BB6926C5DC420080AFF9 /* spring.mp3 in Resources */,
+				826786D626C9B1BE000A08D8 /* NewsCollectionViewCell.xib in Resources */,
 				1273D10C269377CE003F2E68 /* Assets.xcassets in Resources */,
 				8258BB6D26C5E1F10080AFF9 /* shrek.mp3 in Resources */,
 				1273D10A269377CC003F2E68 /* Main.storyboard in Resources */,
@@ -422,6 +436,7 @@
 				82040CF626B7394400AEBAE5 /* UserFB.swift in Sources */,
 				1273D174269CB611003F2E68 /* UserAPI.swift in Sources */,
 				829A90FA269F50AD000EC8CA /* Group.swift in Sources */,
+				826786D926C9B1BE000A08D8 /* NewsTableViewCell.swift in Sources */,
 				82E4018C26AB9B960079B3F7 /* GroupsDB.swift in Sources */,
 				828D505026A6560B00408176 /* GroupsTableViewController.swift in Sources */,
 				1273D105269377CC003F2E68 /* SceneDelegate.swift in Sources */,
@@ -433,6 +448,7 @@
 				1273D172269CB5E3003F2E68 /* Session.swift in Sources */,
 				82AA52E426C35C7000074695 /* FriendsTableViewCell.swift in Sources */,
 				828D504E26A648E900408176 /* FriendsTableViewController.swift in Sources */,
+				826786D726C9B1BE000A08D8 /* NewsCollectionViewCell.swift in Sources */,
 				82E57AEE26C0788D00DA85A5 /* FeedAPI.swift in Sources */,
 				82E57AF026C078C500DA85A5 /* FeedTableViewCell.swift in Sources */,
 				82F4AFCF26B9C5F6007CBCCE /* Gif.swift in Sources */,
