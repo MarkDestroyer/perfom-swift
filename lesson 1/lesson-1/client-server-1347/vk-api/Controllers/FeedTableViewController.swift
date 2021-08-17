@@ -12,10 +12,12 @@ class FeedTableViewController: UITableViewController {
     var feedItems: [Item] = []
     var feedProfiles: [Profile] = []
     var feedGroups: [Group] = []
-
+    private let newsCellName = String(describing: NewsTableViewCell.self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib(nibName: newsCellName, bundle: nil), forCellReuseIdentifier: newsCellName)
         
         
         FeedAPI(Session.instance).get{ [weak self] feed in
@@ -34,7 +36,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
         //cell.textLabel?.text = feedItems[indexPath.row].text
         
         let currentFeedItem = feedItems[indexPath.row]
@@ -43,11 +45,11 @@ class FeedTableViewController: UITableViewController {
         
         case 1: // Пост пользователя
             let currentFeedItemProfile = feedProfiles.filter{ $0.id == currentFeedItem.sourceID }[0]
-            cell.configure(item: currentFeedItem, profile: currentFeedItemProfile)
+         //   cell.configure(item: currentFeedItem, profile: currentFeedItemProfile)
             
         case -1: // Пост группы
             let currentFeedItemGroup = feedGroups.filter{ $0.id == abs(currentFeedItem.sourceID) }[0]
-            cell.configure(item: currentFeedItem, group: currentFeedItemGroup)
+        //    cell.configure(item: currentFeedItem, group: currentFeedItemGroup)
             
         default: break
         }

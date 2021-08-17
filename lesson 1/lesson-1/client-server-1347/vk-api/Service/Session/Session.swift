@@ -5,7 +5,7 @@
 //  Created by Artur Igberdin on 12.07.2021.
 //
 
-import Foundation
+import UIKit
 
 class Session {
     

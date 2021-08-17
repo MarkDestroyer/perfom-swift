@@ -43,7 +43,6 @@
 		82AB418126C9BD8B0056B8E7 /* ProfileTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB417D26C9BD8B0056B8E7 /* ProfileTableViewCellModel.swift */; };
 		82B316C326B61C740039A274 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B316C226B61C740039A274 /* GoogleService-Info.plist */; };
 		82C9E5AF26CB2E14002AF93D /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E5AE26CB2E14002AF93D /* LikeButton.swift */; };
-		82C9E5B126CB2E7C002AF93D /* NewsProTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E5B026CB2E7C002AF93D /* NewsProTableViewController.swift */; };
 		82E4018726AB9AF70079B3F7 /* ProfileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018626AB9AF70079B3F7 /* ProfileDB.swift */; };
 		82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018826AB9B350079B3F7 /* FriendsDB.swift */; };
 		82E4018C26AB9B960079B3F7 /* GroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018B26AB9B960079B3F7 /* GroupsDB.swift */; };
@@ -99,7 +98,6 @@
 		82AB417D26C9BD8B0056B8E7 /* ProfileTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellModel.swift; sourceTree = "<group>"; };
 		82B316C226B61C740039A274 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82C9E5AE26CB2E14002AF93D /* LikeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
-		82C9E5B026CB2E7C002AF93D /* NewsProTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProTableViewController.swift; sourceTree = "<group>"; };
 		82E4018626AB9AF70079B3F7 /* ProfileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDB.swift; sourceTree = "<group>"; };
 		82E4018826AB9B350079B3F7 /* FriendsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDB.swift; sourceTree = "<group>"; };
 		82E4018B26AB9B960079B3F7 /* GroupsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDB.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 				826786D526C9B1BE000A08D8 /* NewsTableViewCell.swift */,
 				826786D426C9B1BE000A08D8 /* NewsTableViewCell.xib */,
 				82C9E5AE26CB2E14002AF93D /* LikeButton.swift */,
-				82C9E5B026CB2E7C002AF93D /* NewsProTableViewController.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -472,7 +469,6 @@
 				82E57AF226C079D900DA85A5 /* FeedTableViewController.swift in Sources */,
 				823BB77E26B4D456009EDD8E /* GroupsFB.swift in Sources */,
 				82E57AEC26C0785C00DA85A5 /* Feed.swift in Sources */,
-				82C9E5B126CB2E7C002AF93D /* NewsProTableViewController.swift in Sources */,
 				82E4018726AB9AF70079B3F7 /* ProfileDB.swift in Sources */,
 				82AB417E26C9BD8B0056B8E7 /* NewsTableViewCellModel.swift in Sources */,
 				1273D172269CB5E3003F2E68 /* Session.swift in Sources */,
