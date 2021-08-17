@@ -547,7 +547,7 @@
         <!--Новости-->
         <scene sceneID="oSK-uH-XJ8">
             <objects>
-                <tableViewController id="IgK-eD-p5A" customClass="FeedTableViewController" customModule="client_server_1347" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="IgK-eD-p5A" customClass="NewsTableViewController" customModule="client_server_1347" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QxE-Vh-A70">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
