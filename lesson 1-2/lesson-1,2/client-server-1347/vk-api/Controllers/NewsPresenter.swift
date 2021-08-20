@@ -256,57 +256,70 @@ class VKApi {
     func getNewsList(token: String, userId:String, from: String?, version: String, completion: @escaping (Swift.Result<ResponseNews, Error>) -> Void ) {
         let requestURL = vkURL + "newsfeed.get"
         var params: [String : String]
+        var news:[CommonResponseNews] = []
+        var dispatchGroup = DispatchGroup()
         if let myFrom = from {
             params = ["access_token": token,
-                          "user_id": userId,
-                          "source_ids": "friends,groups,pages",
-                          "filters": "post",
-                          "count": "20",
-                          "fields": "first_name,last_name,name,photo_100,online",
-                          "start_from": myFrom,
-                          "v": version]
+                      "user_id": userId,
+                      "source_ids": "friends,groups,pages",
+                      "filters": "post",
+                      "count": "20",
+                      "fields": "first_name,last_name,name,photo_100,online",
+                      "start_from": myFrom,
+                      "v": version]
             
         } else {
             params = ["access_token": token,
-                          "user_id": userId,
-                          "source_ids": "friends,groups,pages",
-                          "filters": "post",
-                          "count": "20",
-                          "fields": "first_name,last_name,name,photo_100,online",
-                          "v": version]
+                      "user_id": userId,
+                      "source_ids": "friends,groups,pages",
+                      "filters": "post",
+                      "count": "20",
+                      "fields": "first_name,last_name,name,photo_100,online",
+                      "v": version]
         }
         //Делаем остановку на дозагрузку, как в нативном VK-клиенте. Защита при одновременном срабатывании методов дозагрузки и обновления.
         Alamofire.Session.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
         
-        AF.request(requestURL,
-                          method: .post,
-                          parameters: params as Parameters)
-            .responseData { (result) in
-                guard let data = result.value else { return }
-                do {
-                    let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
-                    completion(.success(result.response))
-                } catch {
-                    
-                    //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
-                    do {
-                        let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
-                        if result.error.errorCode == 5 {
-                            let keychain = Keychain(service: "UserSecrets")
-                            keychain["token"] = nil
-                            keychain["userId"] = nil
-                            print("[Logging] Your data is cleared, please restart the application")
+        for index in news.enumerated() {
+            DispatchQueue.global().async(group: dispatchGroup) {
+                Alamofire.Session.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
+                
+                AF.request(requestURL,
+                           method: .post,
+                           parameters: params as Parameters)
+                    .responseData { (result) in
+                        guard let data = result.value else { return }
+                        do {
+                            let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
+                            news.append(result)
+                            completion(.success(result.response))
+                        } catch {
+                            
+                            //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
+                            do {
+                                let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
+                                if result.error.errorCode == 5 {
+                                    let keychain = Keychain(service: "UserSecrets")
+                                    keychain["token"] = nil
+                                    keychain["userId"] = nil
+                                    print("[Logging] Your data is cleared, please restart the application")
+                                }
+                                completion(.failure(error))
+                            } catch {
+                                completion(.failure(error))
+                            }
+                            completion(.failure(error))
                         }
-                        completion(.failure(error))
-                    } catch {
-                        completion(.failure(error))
                     }
-                    completion(.failure(error))
-                }
+            }
+        
+        
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                completion(.success(news))
+            }
         }
     }
 }
-
 
 struct ResponseErrorVK: Codable {
     let error: ErrorVK
