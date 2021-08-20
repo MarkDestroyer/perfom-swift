@@ -77,7 +77,7 @@ extension NewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if let image = UIImage(systemName: "chevron.left", withConfiguration: config) {
             let newImage = image.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
             let options: [ImageViewerOption] = [.closeIcon(newImage)]
-            cell.collectionImage.setupImageViewer()
+            cell.collectionImage.setupImageViewer(urls: photos, initialIndex: indexPath.row, options: options)
         } else {
             cell.collectionImage.setupImageViewer(urls: photos, initialIndex: indexPath.row)
         }
@@ -90,3 +90,4 @@ extension NewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return cell
     }
 }
+

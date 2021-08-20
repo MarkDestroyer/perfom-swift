@@ -63,7 +63,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JBw-al-zLc" secondAttribute="height" multiplier="1:1" id="RJd-8b-7L6"/>
                                 </constraints>
-                                <collectionViewLayout key="collectionViewLayout" id="gET-a0-CF5" customClass="CustomNewsCollectionLayout" customModule="client_server_1347" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="gET-a0-CF5" customClass="CustomNewsCollectionLayout" customModule="client_server_1347"/>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VHF-t6-Mwi">
                                 <rect key="frame" x="0.0" y="642" width="550" height="67"/>

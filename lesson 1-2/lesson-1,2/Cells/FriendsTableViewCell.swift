@@ -34,14 +34,14 @@ class FriendsTableViewCell: UITableViewCell {
             isOnline.text = "онлайн ●"
         } else if friendItem.online == 0 && friendItem.sex == 1 {
             isOnline.textColor = UIColor.darkGray
-            isOnline.text = "заходила в"
+            isOnline.text = "заходила в "
         } else if friendItem.online == 0 && friendItem.sex == 2 {
             isOnline.textColor = UIColor.darkGray
-            isOnline.text = "заходил в"
+            isOnline.text = "заходил в "
         }
         
         if friendItem.sex == 1 {
-            sex.textColor = UIColor.purple
+            sex.textColor = UIColor.systemPink
             sex.text = "♀"
             FriendPhoto.layer.borderWidth = 3
             FriendPhoto.layer.borderColor = UIColor.systemPink.cgColor

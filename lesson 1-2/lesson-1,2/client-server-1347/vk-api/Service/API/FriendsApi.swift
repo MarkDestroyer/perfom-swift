@@ -25,7 +25,7 @@ class FriendsAPI {
             "access_token": session.token,
             "v": session.version,
             //"extended": "1",
-            "fields": "online,first_name, photo_max, sex, bdate, last_seen",
+            "fields": "online,first_name, photo_max, sex, bdate",
             
         ]
         
@@ -52,3 +52,6 @@ class FriendsAPI {
         }
     }
 }
+
+
+
