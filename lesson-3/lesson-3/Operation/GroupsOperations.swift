@@ -6,11 +6,9 @@
 //
 
 import Foundation
-import RealmSwift
-import Alamofire
 
-class FetchGroups: Operation {
-    
+class FetchGroupData: Operation {
+
     var data: Data?
     
     override func main() {
@@ -25,7 +23,7 @@ class FetchGroups: Operation {
             URLQueryItem(name: "access_token", value: String(Session.instance.token)),
             URLQueryItem(name: "v", value: Session.instance.version),
             URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "fields", value: "members_count"),
+            URLQueryItem(name: "fields", value: "description,members_count"),
         ]
         
         guard let url = components.url else { return }
@@ -34,71 +32,37 @@ class FetchGroups: Operation {
     }
 }
 
-class ParseGroups: Operation {
+class ParseGroupData: Operation {
     
-    var groups: [GroupItem]? = []
+    var groupItems: [GroupItem]? = []
     
     override func main() {
-        guard let fdata = dependencies.first as? FetchGroups,
-              let data = fdata.data else { return }
+        guard let fetchGroupData = dependencies.first as? FetchGroupData,
+              let data = fetchGroupData.data else { return }
         do {
             var groups: Groups
             groups = try JSONDecoder().decode(Groups.self, from: data)
-            self.groups = groups.response.items
+            self.groupItems = groups.response.items
         } catch {
             print(error)
         }
     }
 }
 
-
-class SaveGroups: Operation {
+class DisplayGroupData: Operation {
     
-    let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-    lazy var mainRealm = try! Realm(configuration: config)
-    var groups: [GroupItem]? = []
+    var controller: GroupTableViewController
     
     override func main() {
-        guard let bd = dependencies.first as? ParseGroups,
-              let data = bd.groups else { return }
-              
-        func get() -> Results<GroupItem> {
-            
-            let groups = mainRealm.objects(GroupItem.self)
-            print("группы получены")
-            return groups
-        }
-        
-        func addUpdate(_ friends: [GroupItem]) {
-            
-            do {
-                mainRealm.beginWrite()
-                friends.forEach{ mainRealm.add($0, update: .all) }
-                try mainRealm.commitWrite()
-            } catch {
-                print(error)
-            }
-        
-        }
-    }
-}
-
-
-class DisplayGroups: Operation {
-    
-    var controller = GroupTableViewController()
-    
-    override func main() {
-        guard let parsegroups = dependencies.first as? SaveGroups,
-              let groupItems = parsegroups.groups else { return }
+        guard let parseGroupData = dependencies.first as? ParseGroupData,
+              let groupItems = parseGroupData.groupItems else { return }
         controller.groupItems = groupItems
         controller.tableView.reloadData()
-        print("показаны группы на экране")
+        
     }
     
     init(_ controller: GroupTableViewController) {
         
         self.controller = controller
     }
-
 }

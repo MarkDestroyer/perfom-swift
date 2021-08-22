@@ -22,7 +22,6 @@
 		823BB77A26B4D173009EDD8E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77926B4D173009EDD8E /* Gradient.swift */; };
 		823BB77C26B4D448009EDD8E /* FriendsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77B26B4D448009EDD8E /* FriendsFB.swift */; };
 		823BB77E26B4D456009EDD8E /* GroupsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77D26B4D456009EDD8E /* GroupsFB.swift */; };
-		823E0F8B26D225A500DF4C31 /* FriendOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823E0F8A26D225A500DF4C31 /* FriendOperations.swift */; };
 		8246404126D2617D00DDBE4B /* GroupsOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246404026D2617D00DDBE4B /* GroupsOperations.swift */; };
 		8258BB6926C5DC420080AFF9 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6826C5DC420080AFF9 /* spring.mp3 */; };
 		8258BB6B26C5DE5B0080AFF9 /* spring2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */; };
@@ -82,7 +81,6 @@
 		823BB77926B4D173009EDD8E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		823BB77B26B4D448009EDD8E /* FriendsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFB.swift; sourceTree = "<group>"; };
 		823BB77D26B4D456009EDD8E /* GroupsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFB.swift; sourceTree = "<group>"; };
-		823E0F8A26D225A500DF4C31 /* FriendOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOperations.swift; sourceTree = "<group>"; };
 		8246404026D2617D00DDBE4B /* GroupsOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsOperations.swift; sourceTree = "<group>"; };
 		8258BB6826C5DC420080AFF9 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring2.mp3; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 		823E0F8926D2258F00DF4C31 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				823E0F8A26D225A500DF4C31 /* FriendOperations.swift */,
 				8246404026D2617D00DDBE4B /* GroupsOperations.swift */,
 			);
 			path = Operation;
@@ -477,7 +474,6 @@
 				829A90FF269F5C08000EC8CA /* GroupAPI.swift in Sources */,
 				1273D103269377CC003F2E68 /* AppDelegate.swift in Sources */,
 				82F7B68926CC4C4000C018D4 /* NewsTableViewCell.swift in Sources */,
-				823E0F8B26D225A500DF4C31 /* FriendOperations.swift in Sources */,
 				1273D16F269CB4C3003F2E68 /* UserViewController.swift in Sources */,
 				1273D17A269CBD36003F2E68 /* User.swift in Sources */,
 				82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */,

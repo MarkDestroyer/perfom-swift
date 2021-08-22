@@ -23,23 +23,6 @@ class FriendTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let opq = OperationQueue()
-        
-        let fetchFriendData = FetchFriends()
-        opq.addOperation(fetchFriendData)
-        
-        let parseFriendData = ParseFriends()
-        parseFriendData.addDependency(fetchFriendData)
-        opq.addOperation(parseFriendData)
-        
-        let DB = SaveFriends()
-        DB.addDependency(parseFriendData)
-        opq.addOperation(DB)
-        
-        let displayFriendData = DisplayFriends(self)
-        displayFriendData.addDependency(DB)
-        OperationQueue.main.addOperation(displayFriendData)
-        
         
         let localFriendsResults = friendDB.get()
         

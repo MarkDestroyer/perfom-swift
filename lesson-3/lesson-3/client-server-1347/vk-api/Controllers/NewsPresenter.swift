@@ -155,14 +155,14 @@ class NewsPresenterImplementation: NewsPresenter {
                 profiles.forEach { if $0.id == source {
                     post.authorName = $0.fullname
                     post.authorImagePath = $0.photo100
-                    }
+                }
                 }
             }
             if source < 0 {
                 groups.forEach { if $0.id == -source {
                     post.authorName = $0.name
                     post.authorImagePath = $0.photo100
-                    }
+                }
                 }
             }
         }
@@ -258,52 +258,132 @@ class VKApi {
         var params: [String : String]
         if let myFrom = from {
             params = ["access_token": token,
-                          "user_id": userId,
-                          "source_ids": "friends,groups,pages",
-                          "filters": "post",
-                          "count": "50",
-                          "fields": "first_name,last_name,name,photo_100,online",
-                          "start_from": myFrom,
-                          "v": version]
+                      "user_id": userId,
+                      "source_ids": "friends,groups,pages",
+                      "filters": "post",
+                      "count": "50",
+                      "fields": "first_name,last_name,name,photo_100,online",
+                      "start_from": myFrom,
+                      "v": version]
             
         } else {
             params = ["access_token": token,
-                          "user_id": userId,
-                          "source_ids": "friends,groups,pages",
-                          "filters": "post",
-                          "count": "20",
-                          "fields": "first_name,last_name,name,photo_100,online",
-                          "v": version]
+                      "user_id": userId,
+                      "source_ids": "friends,groups,pages",
+                      "filters": "post",
+                      "count": "20",
+                      "fields": "first_name,last_name,name,photo_100,online",
+                      "v": version]
         }
+        
         //Делаем остановку на дозагрузку, как в нативном VK-клиенте. Защита при одновременном срабатывании методов дозагрузки и обновления.
         Alamofire.Session.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
         
         AF.request(requestURL,
-                          method: .post,
-                          parameters: params as Parameters)
+                   method: .post,
+                   parameters: params as Parameters)
             .responseData { (result) in
+                
                 guard let data = result.value else { return }
-                do {
-                    let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
-                    completion(.success(result.response))
-                } catch {
-                    
-                    //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
-                    do {
-                        let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
-                        if result.error.errorCode == 5 {
-                            let keychain = Keychain(service: "UserSecrets")
-                            keychain["token"] = nil
-                            keychain["userId"] = nil
-                            print("[Logging] Your data is cleared, please restart the application")
+                
+                let decoder = JSON(data)
+                let json = JSON(data)
+                let dispatchGroup = DispatchGroup()
+                
+                var vkItemsJSONArr = json["response"]["items"].array
+                var vkProfilesJSONArr = json["response"]["profiles"].array
+                var vkGroupsJSONArr = json["response"]["groups"].array
+                
+                var vkItemsArray: [NewsVK] = []
+                var vkProfilesArray:[UserVK] = []
+                var vkGroupsArray:[GroupVK] = []
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    for (index, items) in vkItemsJSONArr!.enumerated() {
+                        do {
+                            let result = try JSONDecoder().decode(NewsVK.self, from: data)
+                            // completion(.success(result.response))
+                            vkItemsArray.append(result)
+                        } catch {
+                            
+                            //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
+                            do {
+                                let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
+                                if result.error.errorCode == 5 {
+                                    let keychain = Keychain(service: "UserSecrets")
+                                    keychain["token"] = nil
+                                    keychain["userId"] = nil
+                                    print("[Logging] Your data is cleared, please restart the application")
+                                }
+                                completion(.failure(error))
+                            } catch {
+                                completion(.failure(error))
+                            }
+                            completion(.failure(error))
                         }
-                        completion(.failure(error))
-                    } catch {
-                        completion(.failure(error))
                     }
-                    completion(.failure(error))
+                }
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    for (index, items) in vkProfilesJSONArr!.enumerated() {
+                        do {
+                            let result = try JSONDecoder().decode(UserVK.self, from: data)
+                            // completion(.success(result.response))
+                            vkProfilesArray.append(result)
+                        } catch {
+                            
+                            //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
+                            do {
+                                let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
+                                if result.error.errorCode == 5 {
+                                    let keychain = Keychain(service: "UserSecrets")
+                                    keychain["token"] = nil
+                                    keychain["userId"] = nil
+                                    print("[Logging] Your data is cleared, please restart the application")
+                                }
+                                completion(.failure(error))
+                            } catch {
+                                completion(.failure(error))
+                            }
+                            completion(.failure(error))
+                        }
+                    }
+                }
+                
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    for (index, items) in vkGroupsJSONArr!.enumerated() {
+                        do {
+                            let result = try JSONDecoder().decode(GroupVK.self, from: data)
+                            // completion(.success(result.response))
+                            vkGroupsArray.append(result)
+                        } catch {
+                            
+                            //Пример обработки определенной ошибки (5: токен привязан к другому IP адресу)
+                            do {
+                                let result = try JSONDecoder().decode(ResponseErrorVK.self, from: data)
+                                if result.error.errorCode == 5 {
+                                    let keychain = Keychain(service: "UserSecrets")
+                                    keychain["token"] = nil
+                                    keychain["userId"] = nil
+                                    print("[Logging] Your data is cleared, please restart the application")
+                                }
+                                completion(.failure(error))
+                            } catch {
+                                completion(.failure(error))
+                            }
+                            completion(.failure(error))
+                        }
+                    }
+                }
+                
+                dispatchGroup.notify(queue: DispatchQueue.main) {
+                    let responses = ResponseNews(items: vkItemsArray, profiles: vkProfilesArray, groups: vkGroupsArray, nextFrom: "next_from")
+                    let feed = CommonResponseNews(response: responses)
+                    completion(.success(feed.response))
+                }
+                
             }
-        }
     }
 }
 
@@ -316,7 +396,7 @@ struct ErrorVK: Codable {
     let errorCode: Int
     let errorMessage: String
     let requestParams: [RequestParam]
-
+    
     enum CodingKeys: String, CodingKey {
         case errorCode = "error_code"
         case errorMessage = "error_msg"
@@ -352,7 +432,7 @@ class NewsRealm: Object {
         
         var photosToModel = [String]()
         photos.forEach { photosToModel.append($0) }
-    
+        
         return PostVK(text: text, likes: likes, userLikes: userLikes, views: views, comments: comments, reposts: reposts, date: date, authorImagePath: authorImagePath, authorName: authorName, photos: photosToModel)
     }
 }
@@ -438,7 +518,7 @@ class NewsRepository: NewsSource {
         do {
             let realm = try Realm()
             let news = realm.objects(NewsRealm.self).sorted(byKeyPath: "date")
-        
+            
             if news.count > 20 {
                 var newsToSave = [NewsRealm]()
                 for i in 1...20 {

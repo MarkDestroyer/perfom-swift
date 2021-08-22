@@ -125,10 +125,10 @@ extension NewsTableViewController: NewsTableViewControllerUpdater {
     
     func showConnectionAlert() {
         
-        let alert = UIAlertController(title: "Error", message: "An error occurred while loading the data, check the network connection, if this error appears again, please restart the application", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "Error", message: "An error occurred while loading the data, check the network connection, if this error appears again, please restart the application", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//        alert.addAction(action)
+//        self.present(alert, animated: true, completion: nil)
     }
     
     func endRefreshing() {
