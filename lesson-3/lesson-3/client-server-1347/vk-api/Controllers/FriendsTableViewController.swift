@@ -8,19 +8,17 @@
 import UIKit
 import RealmSwift
 import Firebase
-import AVFoundation
+
 
 class FriendTableViewController: UITableViewController {
     
-    var audioPlayer = AVAudioPlayer()
+
     var friendItems: [FriendItem] = []
     let friendDB = FriendDB()
     let ref = Database.database().reference(withPath: "userinfo/friends")
     var token: NotificationToken?
     
-    @IBAction func Play(_ sender: Any) {
-        audioPlayer.play()
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +32,16 @@ class FriendTableViewController: UITableViewController {
         parseGroupData.addDependency(fetchGroupData)
         opq.addOperation(parseGroupData)
         
-        let displayGroupData = DisplayFriends()
-        displayGroupData.addDependency(parseGroupData)
+        let DB = SaveFriends()
+        DB.addDependency(parseGroupData)
+        opq.addOperation(DB)
+        
+        let displayGroupData = DisplayFriends(self)
+        displayGroupData.addDependency(DB)
         OperationQueue.main.addOperation(displayGroupData)
         
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "spring", ofType: "mp3") ?? ""))
-            audioPlayer.prepareToPlay()
-        } catch {
-            print(error)
-        }
+        
         
         let localFriendsResults = friendDB.get()
         

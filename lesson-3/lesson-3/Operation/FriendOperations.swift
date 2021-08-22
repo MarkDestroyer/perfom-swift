@@ -1,10 +1,3 @@
-//
-//  FriendOperations.swift
-//  client-server-1347
-//
-//  Created by Марк Киричко on 22.08.2021.
-//
-
 import Foundation
 import RealmSwift
 import Alamofire
@@ -25,7 +18,7 @@ class FetchFriends: Operation {
             URLQueryItem(name: "access_token", value: String(Session.instance.token)),
             URLQueryItem(name: "v", value: Session.instance.version),
             URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "fields", value: "description,members_count"),
+            URLQueryItem(name: "fields", value: "first_name"),
         ]
         
         guard let url = components.url else { return }
@@ -56,13 +49,17 @@ class SaveFriends: Operation {
     
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     lazy var mainRealm = try! Realm(configuration: config)
-    var fiends: [FriendItem] = []
+    var friends: [FriendItem]? = []
     
     override func main() {
+        guard let bd = dependencies.first as? ParseFriends,
+              let data = bd.friends else { return }
         do {
             mainRealm.beginWrite()
-            fiends.forEach{ mainRealm.add($0, update: .all) }
+            friends!.forEach{ mainRealm.add($0, update: .all) }
             try mainRealm.commitWrite()
+            print("сохранены друзья в Realm")
+            
         } catch {
             print(error)
         }
@@ -75,9 +72,17 @@ class DisplayFriends: Operation {
     var controller = FriendTableViewController()
     
     override func main() {
-        guard let parsefriends = dependencies.first as? ParseFriends,
+        guard let parsefriends = dependencies.first as? SaveFriends,
               let fItems = parsefriends.friends else { return }
         controller.friendItems = fItems
         controller.tableView.reloadData()
+        print("показаны друзья на экране")
     }
+    
+    init(_ controller: FriendTableViewController) {
+        
+        self.controller = controller
+    }
+
 }
+
