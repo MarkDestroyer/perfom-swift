@@ -25,22 +25,20 @@ class FriendTableViewController: UITableViewController {
         
         let opq = OperationQueue()
         
-        let fetchGroupData = FetchFriends()
-        opq.addOperation(fetchGroupData)
+        let fetchFriendData = FetchFriends()
+        opq.addOperation(fetchFriendData)
         
-        let parseGroupData = ParseFriends()
-        parseGroupData.addDependency(fetchGroupData)
-        opq.addOperation(parseGroupData)
+        let parseFriendData = ParseFriends()
+        parseFriendData.addDependency(fetchFriendData)
+        opq.addOperation(parseFriendData)
         
         let DB = SaveFriends()
-        DB.addDependency(parseGroupData)
+        DB.addDependency(parseFriendData)
         opq.addOperation(DB)
         
-        let displayGroupData = DisplayFriends(self)
-        displayGroupData.addDependency(DB)
-        OperationQueue.main.addOperation(displayGroupData)
-        
-        
+        let displayFriendData = DisplayFriends(self)
+        displayFriendData.addDependency(DB)
+        OperationQueue.main.addOperation(displayFriendData)
         
         
         let localFriendsResults = friendDB.get()

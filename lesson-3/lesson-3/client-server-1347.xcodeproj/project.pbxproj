@@ -23,6 +23,7 @@
 		823BB77C26B4D448009EDD8E /* FriendsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77B26B4D448009EDD8E /* FriendsFB.swift */; };
 		823BB77E26B4D456009EDD8E /* GroupsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77D26B4D456009EDD8E /* GroupsFB.swift */; };
 		823E0F8B26D225A500DF4C31 /* FriendOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823E0F8A26D225A500DF4C31 /* FriendOperations.swift */; };
+		8246404126D2617D00DDBE4B /* GroupsOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246404026D2617D00DDBE4B /* GroupsOperations.swift */; };
 		8258BB6926C5DC420080AFF9 /* spring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6826C5DC420080AFF9 /* spring.mp3 */; };
 		8258BB6B26C5DE5B0080AFF9 /* spring2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */; };
 		8258BB6D26C5E1F10080AFF9 /* shrek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */; };
@@ -82,6 +83,7 @@
 		823BB77B26B4D448009EDD8E /* FriendsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFB.swift; sourceTree = "<group>"; };
 		823BB77D26B4D456009EDD8E /* GroupsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFB.swift; sourceTree = "<group>"; };
 		823E0F8A26D225A500DF4C31 /* FriendOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendOperations.swift; sourceTree = "<group>"; };
+		8246404026D2617D00DDBE4B /* GroupsOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsOperations.swift; sourceTree = "<group>"; };
 		8258BB6826C5DC420080AFF9 /* spring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring.mp3; sourceTree = "<group>"; };
 		8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spring2.mp3; sourceTree = "<group>"; };
 		8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shrek.mp3; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				823E0F8A26D225A500DF4C31 /* FriendOperations.swift */,
+				8246404026D2617D00DDBE4B /* GroupsOperations.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				829A90F8269F4FA5000EC8CA /* Friends.swift in Sources */,
 				82E57AF226C079D900DA85A5 /* FeedTableViewController.swift in Sources */,
 				823BB77E26B4D456009EDD8E /* GroupsFB.swift in Sources */,
+				8246404126D2617D00DDBE4B /* GroupsOperations.swift in Sources */,
 				82E57AEC26C0785C00DA85A5 /* Feed.swift in Sources */,
 				82E4018726AB9AF70079B3F7 /* ProfileDB.swift in Sources */,
 				82AB417E26C9BD8B0056B8E7 /* NewsTableViewCellModel.swift in Sources */,

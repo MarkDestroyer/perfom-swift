@@ -19,6 +19,23 @@ class GroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let opq = OperationQueue()
+        
+        let fetchGroupData = FetchGroups()
+        opq.addOperation(fetchGroupData)
+        
+        let parseGroupData = ParseGroups()
+        parseGroupData.addDependency(fetchGroupData)
+        opq.addOperation(parseGroupData)
+        
+        let DB = SaveGroups()
+        DB.addDependency(parseGroupData)
+        opq.addOperation(DB)
+        
+        let displayGroupData = DisplayGroups(self)
+        displayGroupData.addDependency(DB)
+        OperationQueue.main.addOperation(displayGroupData)
+        
         let localGroupsResults = groupDB.get()
         
         token = localGroupsResults.observe { (changes: RealmCollectionChange) in

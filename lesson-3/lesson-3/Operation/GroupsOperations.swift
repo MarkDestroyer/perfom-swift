@@ -1,5 +1,5 @@
 //
-//  FriendOperations.swift
+//  GroupsOperations.swift
 //  client-server-1347
 //
 //  Created by Марк Киричко on 22.08.2021.
@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import Alamofire
 
-class FetchFriends: Operation {
+class FetchGroups: Operation {
     
     var data: Data?
     
@@ -18,14 +18,14 @@ class FetchFriends: Operation {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
-        components.path = "/method/friends.get"
+        components.path = "/method/groups.get"
         components.queryItems = [
             URLQueryItem(name: "client_id", value: Session.instance.cliendId),
             URLQueryItem(name: "user_id", value: String(Session.instance.userId)),
             URLQueryItem(name: "access_token", value: String(Session.instance.token)),
             URLQueryItem(name: "v", value: Session.instance.version),
             URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "fields", value: "first_name"),
+            URLQueryItem(name: "fields", value: "members_count"),
         ]
         
         guard let url = components.url else { return }
@@ -34,17 +34,17 @@ class FetchFriends: Operation {
     }
 }
 
-class ParseFriends: Operation {
+class ParseGroups: Operation {
     
-    var friends: [FriendItem]? = []
+    var groups: [GroupItem]? = []
     
     override func main() {
-        guard let fdata = dependencies.first as? FetchFriends,
+        guard let fdata = dependencies.first as? FetchGroups,
               let data = fdata.data else { return }
         do {
-            var friends: Friends
-            friends = try JSONDecoder().decode(Friends.self, from: data)
-            self.friends = friends.response.items
+            var groups: Groups
+            groups = try JSONDecoder().decode(Groups.self, from: data)
+            self.groups = groups.response.items
         } catch {
             print(error)
         }
@@ -52,24 +52,24 @@ class ParseFriends: Operation {
 }
 
 
-class SaveFriends: Operation {
+class SaveGroups: Operation {
     
     let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     lazy var mainRealm = try! Realm(configuration: config)
-    var friends: [FriendItem]? = []
+    var groups: [GroupItem]? = []
     
     override func main() {
-        guard let bd = dependencies.first as? ParseFriends,
-              let data = bd.friends else { return }
-        
-        func get() -> Results<FriendItem> {
+        guard let bd = dependencies.first as? ParseGroups,
+              let data = bd.groups else { return }
+              
+        func get() -> Results<GroupItem> {
             
-            let friends = mainRealm.objects(FriendItem.self)
-            print("друзья получены")
-            return friends
+            let groups = mainRealm.objects(GroupItem.self)
+            print("группы получены")
+            return groups
         }
         
-        func addUpdate(_ friends: [FriendItem]) {
+        func addUpdate(_ friends: [GroupItem]) {
             
             do {
                 mainRealm.beginWrite()
@@ -84,19 +84,19 @@ class SaveFriends: Operation {
 }
 
 
-class DisplayFriends: Operation {
+class DisplayGroups: Operation {
     
-    var controller = FriendTableViewController()
+    var controller = GroupTableViewController()
     
     override func main() {
-        guard let parsefriends = dependencies.first as? SaveFriends,
-              let fItems = parsefriends.friends else { return }
-        controller.friendItems = fItems
+        guard let parsegroups = dependencies.first as? SaveGroups,
+              let groupItems = parsegroups.groups else { return }
+        controller.groupItems = groupItems
         controller.tableView.reloadData()
-        print("показаны друзья на экране")
+        print("показаны группы на экране")
     }
     
-    init(_ controller: FriendTableViewController) {
+    init(_ controller: GroupTableViewController) {
         
         self.controller = controller
     }
