@@ -2,7 +2,6 @@ PODS:
   - Alamofire (5.4.3)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
-  - DynamicJSON (2.0.2)
   - Firebase/Auth (8.3.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.3.0)
@@ -84,7 +83,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - DynamicJSON
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
@@ -96,13 +94,12 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage
   - SwiftKeychainWrapper
-  - SwiftyJSON (~> 4.0)
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
-    - DynamicJSON
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -130,7 +127,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
-  DynamicJSON: fc0c5a82980ff8aa956156f04d84fcdb2822e875
   Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
   FirebaseAuth: fd12c82de44e7ad3b821610c387b8251f03aa0f9
   FirebaseCore: a6dba751680d7033b9d3831e1cfc95ead0605118
@@ -155,6 +151,6 @@ SPEC CHECKSUMS:
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: a65eb183cc06a3628cecb01019b55990ef3c7399
+PODFILE CHECKSUM: 6a65c33d43897b0c0a64a8feee6b7e2872e7a975
 
 COCOAPODS: 1.10.2

@@ -49,7 +49,6 @@
 		82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018826AB9B350079B3F7 /* FriendsDB.swift */; };
 		82E4018C26AB9B960079B3F7 /* GroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018B26AB9B960079B3F7 /* GroupsDB.swift */; };
 		82E57ACE26C02B4E00DA85A5 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E57ACD26C02B4E00DA85A5 /* RoundedImageView.swift */; };
-		82E57AD226C0385A00DA85A5 /* DynamicJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E57AD126C0385A00DA85A5 /* DynamicJSON.swift */; };
 		82ED1E4E26A0D0E500E579E6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ED1E4D26A0D0E500E579E6 /* MenuViewController.swift */; };
 		82F4AFCF26B9C5F6007CBCCE /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4AFCE26B9C5F6007CBCCE /* Gif.swift */; };
 		F320027BE1AF76140BB156D5 /* Pods_client_server_1347.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2481B53F2E8E26E70DF966 /* Pods_client_server_1347.framework */; };
@@ -99,7 +98,6 @@
 		82E4018826AB9B350079B3F7 /* FriendsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDB.swift; sourceTree = "<group>"; };
 		82E4018B26AB9B960079B3F7 /* GroupsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDB.swift; sourceTree = "<group>"; };
 		82E57ACD26C02B4E00DA85A5 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
-		82E57AD126C0385A00DA85A5 /* DynamicJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicJSON.swift; sourceTree = "<group>"; };
 		82ED1E4D26A0D0E500E579E6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		82F4AFCE26B9C5F6007CBCCE /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		955BEA970DE9C203FB9F929A /* Pods-client-server-1347.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-client-server-1347.debug.xcconfig"; path = "Target Support Files/Pods-client-server-1347/Pods-client-server-1347.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				828BD71026C1CC1C00953CBD /* hz.gif */,
 				82E57ACD26C02B4E00DA85A5 /* RoundedImageView.swift */,
 				82F4AFCE26B9C5F6007CBCCE /* Gif.swift */,
-				82E57AD126C0385A00DA85A5 /* DynamicJSON.swift */,
 				823BB77826B4D15F009EDD8E /* Design */,
 				823BB77526B4C685009EDD8E /* FB */,
 				82E4018526AB9ADA0079B3F7 /* DB */,
@@ -454,7 +451,6 @@
 				1273D17A269CBD36003F2E68 /* User.swift in Sources */,
 				82246FBB26D45F50001ACEA0 /* GroupTableViewCell.swift in Sources */,
 				82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */,
-				82E57AD226C0385A00DA85A5 /* DynamicJSON.swift in Sources */,
 				82040CF626B7394400AEBAE5 /* UserFB.swift in Sources */,
 				1273D174269CB611003F2E68 /* UserAPI.swift in Sources */,
 				829A90FA269F50AD000EC8CA /* Group.swift in Sources */,

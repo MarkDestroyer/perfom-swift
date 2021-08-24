@@ -31,7 +31,7 @@ class FeedItemInfoTableViewCell: UITableViewCell {
                 
                 feedItemUserGroupName.text = "\(profile.firstName) \(profile.lastName)"
                 
-                AF.request(profile.photo100, method: .get).responseImage { response in
+                AF.request(profile.photo100 as! URLConvertible, method: .get).responseImage { response in
                     guard let image = response.value else { return }
                     self.feedItemUserGroupImage.image = image
                 }

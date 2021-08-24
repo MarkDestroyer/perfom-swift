@@ -60,8 +60,8 @@ struct Item: Codable {
     let postType, text: String?
     let markedAsAds: Int?
     let attachments: [Attachment]?
-    let postSource: PostSource
-    let comments: Comments
+    let postSource: PostSource?
+    let comments: Comments?
     let likes: Likes
     let reposts: Reposts
     let views: Views?
@@ -140,7 +140,7 @@ struct Photo: Codable {
 
 // MARK: - Comments
 struct Comments: Codable {
-    let count, canPost: Int
+    let count, canPost: Int?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -150,7 +150,7 @@ struct Comments: Codable {
 
 // MARK: - Likes
 struct Likes: Codable {
-    let count, userLikes, canLike, canPublish: Int
+    let count, userLikes, canLike, canPublish: Int?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -162,12 +162,12 @@ struct Likes: Codable {
 
 // MARK: - PostSource
 struct PostSource: Codable {
-    let type: String
+    let type: String?
 }
 
 // MARK: - Reposts
 struct Reposts: Codable {
-    let count, userReposted: Int
+    let count, userReposted: Int?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -177,7 +177,7 @@ struct Reposts: Codable {
 
 // MARK: - Views
 struct Views: Codable {
-    let count: Int
+    let count: Int?
 }
 
 // MARK: - Profile
@@ -214,3 +214,4 @@ struct OnlineInfo: Codable {
         case isMobile = "is_mobile"
     }
 }
+
