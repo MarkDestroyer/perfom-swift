@@ -2,19 +2,18 @@
 //  Feed.swift
 //  client-server-1347
 //
-//  Created by Марк Киричко on 08.08.2021.
+//  Created by Марк Киричко on 25.08.2021.
 //
 
 import Foundation
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let feed = try? newJSONDecoder().decode(Feed.self, from: jsonData)
-
 // MARK: - Feed
 struct Feed: Codable {
     let response: FeedResponse
+    
+    init (response: FeedResponse) {
+        self.response = response
+    }
 }
 
 // MARK: - Response
@@ -22,11 +21,18 @@ struct FeedResponse: Codable {
     let items: [Item]
     let profiles: [Profile]
     let groups: [Group]
-    let nextFrom: String?
-
+    let nextFrom: String
+    
     enum CodingKeys: String, CodingKey {
         case items, profiles, groups
         case nextFrom = "next_from"
+    }
+    
+    init(items: [Item], profiles: [Profile], groups: [Group]) {
+        self.items = items
+        self.profiles = profiles
+        self.groups = groups
+        self.nextFrom = ""
     }
 }
 
@@ -38,7 +44,7 @@ struct Group: Codable {
     let type: String
     let isAdmin, isMember, isAdvertiser: Int?
     let photo50, photo100, photo200: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case screenName = "screen_name"
@@ -61,14 +67,24 @@ struct Item: Codable {
     let postType, text: String?
     let markedAsAds: Int?
     let attachments: [Attachment]?
-    let postSource: PostSource?
-    let comments: Comments?
+    let postSource: PostSource
+    let comments: Comments
     let likes: Likes
     let reposts: Reposts
-    let views: Views
+    let views: Views?
     let postID: Int?
     let type: String
-
+    
+    // MARK: - Computed properties.
+    
+    var hasText: Bool {
+        return self.text != nil && self.text != ""
+    }
+    
+    var hasPhoto604: Bool {
+        return self.attachments?[0].photo?.photo604 != nil
+    }
+    
     enum CodingKeys: String, CodingKey {
         case sourceID = "source_id"
         case date
@@ -109,7 +125,7 @@ struct Photo: Codable {
     let postID: Int?
     let text: String
     let userID, width: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case albumID = "album_id"
         case date, id
@@ -131,8 +147,8 @@ struct Photo: Codable {
 
 // MARK: - Comments
 struct Comments: Codable {
-    let count, canPost: Int?
-
+    let count, canPost: Int
+    
     enum CodingKeys: String, CodingKey {
         case count
         case canPost = "can_post"
@@ -141,8 +157,8 @@ struct Comments: Codable {
 
 // MARK: - Likes
 struct Likes: Codable {
-    let count, userLikes, canLike, canPublish: Int?
-
+    let count, userLikes, canLike, canPublish: Int
+    
     enum CodingKeys: String, CodingKey {
         case count
         case userLikes = "user_likes"
@@ -158,8 +174,8 @@ struct PostSource: Codable {
 
 // MARK: - Reposts
 struct Reposts: Codable {
-    let count, userReposted: Int?
-
+    let count, userReposted: Int
+    
     enum CodingKeys: String, CodingKey {
         case count
         case userReposted = "user_reposted"
@@ -181,7 +197,7 @@ struct Profile: Codable {
     let photo50, photo100: String
     let onlineInfo: OnlineInfo
     let online: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case id
@@ -195,24 +211,14 @@ struct Profile: Codable {
     }
 }
 
-struct CommentsNews: Codable {
-    let count: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case count
-    }
-}
-
-
 // MARK: - OnlineInfo
 struct OnlineInfo: Codable {
-    let visible, isOnline, isMobile: Bool
-
+    let visible, isOnline, isMobile: Bool?
+    
     enum CodingKeys: String, CodingKey {
         case visible
         case isOnline = "is_online"
         case isMobile = "is_mobile"
     }
 }
-
 
