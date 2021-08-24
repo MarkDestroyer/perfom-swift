@@ -1,11 +1,3 @@
-//
-//  FeedItemFooter.swift
-//  ys-client-server-1347
-//
-//  Created by Ярослав on 16.08.2021.
-//
-
-
 import Foundation
 import UIKit
 

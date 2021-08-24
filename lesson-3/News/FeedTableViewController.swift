@@ -1,10 +1,3 @@
-//
-//  FeedTableViewController.swift
-//  ys-client-server-1347
-//
-//  Created by Ярослав on 07.08.2021.
-//
-
 import UIKit
 import Alamofire
 

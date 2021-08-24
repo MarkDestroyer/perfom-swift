@@ -1,10 +1,3 @@
-//
-//  FeedItemTextTableViewCell.swift
-//  ys-client-server-1347
-//
-//  Created by Ярослав on 15.08.2021.
-//
-
 import UIKit
 
 class FeedItemTextTableViewCell: UITableViewCell {
