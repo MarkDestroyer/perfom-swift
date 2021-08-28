@@ -10,6 +10,7 @@ import Alamofire
 import AlamofireImage
 import Firebase
 
+
 class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var userImage: RoundedImageView!
@@ -50,6 +51,7 @@ class UserInfoViewController: UIViewController {
                 self.userImage.image = image
                 self.userImage.layer.borderWidth = 3
                 self.userImage.layer.borderColor = UIColor.black.cgColor
+                
             }
         }
     }

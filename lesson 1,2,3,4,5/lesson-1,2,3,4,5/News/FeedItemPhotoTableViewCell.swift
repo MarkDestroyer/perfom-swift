@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import ImageViewer_swift
 
 class FeedItemPhotoTableViewCell: UITableViewCell {
     
@@ -28,6 +29,7 @@ class FeedItemPhotoTableViewCell: UITableViewCell {
             AF.request(url!, method: .get).responseImage { response in
                 guard let image = response.value else { return }
                 self.feedItemPhoto.image = image
+                self.feedItemPhoto.setupImageViewer()
             }
         }
     }

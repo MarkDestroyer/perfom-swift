@@ -136,6 +136,7 @@ class FeedTableViewController: UITableViewController {
         if currentFeedItem.hasPhoto604 {
             
             cell.configure(url: currentFeedItem.attachments![0].photo!.photo604!)
+            
             return cell
             
         } else {

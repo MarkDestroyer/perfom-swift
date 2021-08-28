@@ -22,4 +22,5 @@ target 'client-server-1347' do
   pod 'AlamofireImage'
   pod 'Kingfisher'
   pod 'ImageViewer.swift', '~> 3.0'
+  pod 'PromiseKit'
 end

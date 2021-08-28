@@ -40,6 +40,7 @@
 		829A90FD269F5594000EC8CA /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A90FC269F5594000EC8CA /* FriendsApi.swift */; };
 		829A90FF269F5C08000EC8CA /* GroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A90FE269F5C08000EC8CA /* GroupAPI.swift */; };
 		82AA52E426C35C7000074695 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AA52E326C35C7000074695 /* FriendsTableViewCell.swift */; };
+		82B1C80126D9A60D0021083B /* FriendsPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1C80026D9A60D0021083B /* FriendsPromise.swift */; };
 		82B316C326B61C740039A274 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B316C226B61C740039A274 /* GoogleService-Info.plist */; };
 		82E4018726AB9AF70079B3F7 /* ProfileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018626AB9AF70079B3F7 /* ProfileDB.swift */; };
 		82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018826AB9B350079B3F7 /* FriendsDB.swift */; };
@@ -89,6 +90,7 @@
 		829A90FC269F5594000EC8CA /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
 		829A90FE269F5C08000EC8CA /* GroupAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPI.swift; sourceTree = "<group>"; };
 		82AA52E326C35C7000074695 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		82B1C80026D9A60D0021083B /* FriendsPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPromise.swift; sourceTree = "<group>"; };
 		82B316C226B61C740039A274 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82E4018626AB9AF70079B3F7 /* ProfileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDB.swift; sourceTree = "<group>"; };
 		82E4018826AB9B350079B3F7 /* FriendsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDB.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		1273D0F6269377CC003F2E68 = {
 			isa = PBXGroup;
 			children = (
+				82B1C7FF26D9A4CF0021083B /* Future */,
 				8289E44A26D5BF890074028D /* Operation */,
 				8270BA4026D5A74E005CA02A /* News */,
 				8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */,
@@ -286,6 +289,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		82B1C7FF26D9A4CF0021083B /* Future */ = {
+			isa = PBXGroup;
+			children = (
+				82B1C80026D9A60D0021083B /* FriendsPromise.swift */,
+			);
+			path = Future;
+			sourceTree = "<group>";
+		};
 		82E4018526AB9ADA0079B3F7 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1273D177269CB9C6003F2E68 /* Data+PrettyJSON.swift in Sources */,
+				82B1C80126D9A60D0021083B /* FriendsPromise.swift in Sources */,
 				8270BA4826D5A864005CA02A /* FeedItemFooter.swift in Sources */,
 				8270BA4226D5A7AC005CA02A /* Feed.swift in Sources */,
 				823BB77C26B4D448009EDD8E /* FriendsFB.swift in Sources */,
