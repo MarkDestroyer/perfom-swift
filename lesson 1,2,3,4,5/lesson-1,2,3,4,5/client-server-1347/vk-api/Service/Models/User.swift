@@ -5,20 +5,31 @@
 //  Created by Artur Igberdin on 12.07.2021.
 //
 
-import Foundation
-import RealmSwift
+struct User: Codable {
+    let response: [UserResponse]
+}
 
-class User: Object {
-    
-    @objc dynamic var id: Int = 0
-    @objc dynamic var firstName: String = ""
-    @objc dynamic var lastName: String = ""
-    @objc dynamic var imageURL: String?
-    @objc dynamic var country: String = ""
-    @objc dynamic var city: String = ""
-   
-    
-    override static func primaryKey() -> String? {
-        return "id"
+// MARK: - Response
+struct UserResponse: Codable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let city, country: Location
+    let photo_200: String?
+    let hasPhoto: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case city, country
+        case photo_200 = "photo_200"
+        case hasPhoto = "has_photo"
     }
+}
+
+// MARK: - City
+struct Location: Codable {
+    let id: Int
+    let title: String
 }

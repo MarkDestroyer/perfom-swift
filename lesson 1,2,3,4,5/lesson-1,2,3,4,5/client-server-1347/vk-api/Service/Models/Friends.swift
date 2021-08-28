@@ -26,9 +26,9 @@ class FriendItem: Object, Codable {
     @objc dynamic var photo_max: String?
     @objc dynamic var id: Int = 0
     @objc dynamic var online: Int = 0
-    @objc dynamic var sex: Int = 0
+    var sex: Int?
     @objc dynamic var bdate: String?
-
+    var lastSeen: LastSeen?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -38,7 +38,7 @@ class FriendItem: Object, Codable {
         case online
         case sex
         case bdate
-
+        case lastSeen = "last_seen"
     }
 
     override static func primaryKey() -> String? {
@@ -47,6 +47,10 @@ class FriendItem: Object, Codable {
 }
 
 
+struct LastSeen: Codable {
+    let platform: Int
+    let time: TimeInterval
+}
 
 
 

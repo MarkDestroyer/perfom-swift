@@ -17,9 +17,8 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var isOnline: UILabel!
     @IBOutlet weak var sex: UILabel!
     
-    var cell = UITableViewCell()
-
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,15 +28,16 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     func configure(_ friendItem: FriendItem) {
+        
         if friendItem.online == 1 {
             isOnline.textColor = UIColor.green
             isOnline.text = "онлайн ●"
         } else if friendItem.online == 0 && friendItem.sex == 1 {
             isOnline.textColor = UIColor.darkGray
-            isOnline.text = "заходила в "
+            isOnline.text = "заходила \(friendItem.lastSeen?.time.getDateStringFromUTC() ?? "lol")"
         } else if friendItem.online == 0 && friendItem.sex == 2 {
             isOnline.textColor = UIColor.darkGray
-            isOnline.text = "заходил в "
+            isOnline.text = "заходил  \(friendItem.lastSeen?.time.getDateStringFromUTC() ?? "lol") "
         }
         
         if friendItem.sex == 1 {

@@ -10,7 +10,14 @@ import Alamofire
 
 // === ИНФО О ПОЛЬЗОВАТЕЛЕ (РУЧНОЙ ПАРСИНГ) ===
 
+
+
 class UserAPI {
+    
+    enum ApplicationError: Error {
+        case unknownError
+        case noPhotoUrls
+    }
     
     let baseUrl = "https://api.vk.com/method"
     let method = "/users.get"
@@ -24,7 +31,7 @@ class UserAPI {
             "user_id": session.userId,
             "access_token": session.token,
             "v": session.version,
-            "fields": "has_photo, photo_max, city, country",
+            "fields": "has_photo, photo_200, city, country",
         ]
         
     }
@@ -38,28 +45,13 @@ class UserAPI {
             guard let data = response.data else { return }
             
             do {
-                let json: Any = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                let object = json as! [String: Any]
-                let response = object["response"] as! [Any]
-                let data = response[0] as! [String: Any]
-                let city = data["city"] as! [String: Any]
-                let country = data["country"] as! [String: Any]
-                
-                let user = User()
-                
-                user.id = data["id"] as! Int
-                user.firstName = data["first_name"] as! String
-                user.lastName = data["last_name"] as! String
-                user.imageURL = data["photo_max"] as? String
-                user.country = country["title"] as! String
-                user.city = city["title"] as! String
-                
+                var user: User
+                user = try JSONDecoder().decode(User.self, from: data)
                 completion(user)
-                
-            }
-            catch {
+            } catch {
                 print(error)
             }
         }
     }
 }
+
