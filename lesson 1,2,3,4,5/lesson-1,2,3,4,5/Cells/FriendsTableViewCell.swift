@@ -37,7 +37,7 @@ class FriendsTableViewCell: UITableViewCell {
             isOnline.text = "заходила \(friendItem.lastSeen?.time.getDateStringFromUTC() ?? "lol")"
         } else if friendItem.online == 0 && friendItem.sex == 2 {
             isOnline.textColor = UIColor.darkGray
-            isOnline.text = "заходил  \(friendItem.lastSeen?.time.getDateStringFromUTC() ?? "lol") "
+            isOnline.text = "заходил \(friendItem.lastSeen?.time.getDateStringFromUTC() ?? "lol") "
         }
         
         if friendItem.sex == 1 {

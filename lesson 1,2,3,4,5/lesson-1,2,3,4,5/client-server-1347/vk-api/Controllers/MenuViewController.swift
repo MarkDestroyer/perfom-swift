@@ -16,7 +16,7 @@ class MenuViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "windows98", ofType: "mp3") ?? ""))
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ps2", ofType: "mp3") ?? ""))
             audioPlayer.play()
         } catch {
             print(error)

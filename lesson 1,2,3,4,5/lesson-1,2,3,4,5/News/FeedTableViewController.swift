@@ -17,6 +17,10 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        
+        
         tableView.register(FeedItemFooter.self, forHeaderFooterViewReuseIdentifier: "sectionFooter")
         tableView.sectionFooterHeight = 50
         tableView.separatorStyle = .singleLine
@@ -78,7 +82,7 @@ class FeedTableViewController: UITableViewController {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionFooter") as! FeedItemFooter
         let currentFeedItem = feedItems[section]
         
-        view.likes.text = "♥ \(currentFeedItem.likes?.count)   |   ⚑ \(currentFeedItem.views?.count ?? 0)"
+        view.likes.text = "♥ \(currentFeedItem.likes?.count ?? 0)   |   ⚑ \(currentFeedItem.views?.count ?? 0)   |   💬 \(currentFeedItem.comments?.count ?? 0)"
         
         return view
     }
@@ -145,6 +149,21 @@ class FeedTableViewController: UITableViewController {
             
         }
     }
+
+    
+    @objc func refresh(sender:AnyObject)
+    {
+        FeedAPI(Session.instance).get{ [weak self] feed in
+            guard let self = self else { return }
+            self.feedItems = feed!.response.items
+            self.feedProfiles = feed!.response.profiles
+            self.feedGroups = feed!.response.groups
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+    }
+
 }
 
 extension Double {

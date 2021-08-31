@@ -19,6 +19,8 @@
 		1273D177269CB9C6003F2E68 /* Data+PrettyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1273D176269CB9C6003F2E68 /* Data+PrettyJSON.swift */; };
 		1273D17A269CBD36003F2E68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1273D179269CBD36003F2E68 /* User.swift */; };
 		82040CF626B7394400AEBAE5 /* UserFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82040CF526B7394400AEBAE5 /* UserFB.swift */; };
+		820AA4CE26DCEB75006E70D9 /* ps2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 820AA4CD26DCEB75006E70D9 /* ps2.mp3 */; };
+		820AA4D026DCED5A006E70D9 /* чпок.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 820AA4CF26DCED5A006E70D9 /* чпок.mp3 */; };
 		823BB77A26B4D173009EDD8E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77926B4D173009EDD8E /* Gradient.swift */; };
 		823BB77C26B4D448009EDD8E /* FriendsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77B26B4D448009EDD8E /* FriendsFB.swift */; };
 		823BB77E26B4D456009EDD8E /* GroupsFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823BB77D26B4D456009EDD8E /* GroupsFB.swift */; };
@@ -40,7 +42,6 @@
 		829A90FD269F5594000EC8CA /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A90FC269F5594000EC8CA /* FriendsApi.swift */; };
 		829A90FF269F5C08000EC8CA /* GroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829A90FE269F5C08000EC8CA /* GroupAPI.swift */; };
 		82AA52E426C35C7000074695 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AA52E326C35C7000074695 /* FriendsTableViewCell.swift */; };
-		82B1C80126D9A60D0021083B /* FriendsPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1C80026D9A60D0021083B /* FriendsPromise.swift */; };
 		82B316C326B61C740039A274 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B316C226B61C740039A274 /* GoogleService-Info.plist */; };
 		82E4018726AB9AF70079B3F7 /* ProfileDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018626AB9AF70079B3F7 /* ProfileDB.swift */; };
 		82E4018926AB9B350079B3F7 /* FriendsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4018826AB9B350079B3F7 /* FriendsDB.swift */; };
@@ -69,6 +70,8 @@
 		1273D176269CB9C6003F2E68 /* Data+PrettyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyJSON.swift"; sourceTree = "<group>"; };
 		1273D179269CBD36003F2E68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		82040CF526B7394400AEBAE5 /* UserFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFB.swift; sourceTree = "<group>"; };
+		820AA4CD26DCEB75006E70D9 /* ps2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ps2.mp3; path = ../../../../Downloads/ps2.mp3; sourceTree = "<group>"; };
+		820AA4CF26DCED5A006E70D9 /* чпок.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "чпок.mp3"; path = "../../../../Downloads/чпок.mp3"; sourceTree = "<group>"; };
 		823BB77926B4D173009EDD8E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		823BB77B26B4D448009EDD8E /* FriendsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFB.swift; sourceTree = "<group>"; };
 		823BB77D26B4D456009EDD8E /* GroupsFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFB.swift; sourceTree = "<group>"; };
@@ -90,7 +93,6 @@
 		829A90FC269F5594000EC8CA /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
 		829A90FE269F5C08000EC8CA /* GroupAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPI.swift; sourceTree = "<group>"; };
 		82AA52E326C35C7000074695 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
-		82B1C80026D9A60D0021083B /* FriendsPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPromise.swift; sourceTree = "<group>"; };
 		82B316C226B61C740039A274 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82E4018626AB9AF70079B3F7 /* ProfileDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDB.swift; sourceTree = "<group>"; };
 		82E4018826AB9B350079B3F7 /* FriendsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDB.swift; sourceTree = "<group>"; };
@@ -129,12 +131,13 @@
 		1273D0F6269377CC003F2E68 = {
 			isa = PBXGroup;
 			children = (
-				82B1C7FF26D9A4CF0021083B /* Future */,
 				8289E44A26D5BF890074028D /* Operation */,
 				8270BA4026D5A74E005CA02A /* News */,
 				8258BB6C26C5E1F10080AFF9 /* shrek.mp3 */,
 				8258BB6A26C5DE5B0080AFF9 /* spring2.mp3 */,
 				8258BB6826C5DC420080AFF9 /* spring.mp3 */,
+				820AA4CD26DCEB75006E70D9 /* ps2.mp3 */,
+				820AA4CF26DCED5A006E70D9 /* чпок.mp3 */,
 				828BD71026C1CC1C00953CBD /* hz.gif */,
 				82E57ACD26C02B4E00DA85A5 /* RoundedImageView.swift */,
 				82F4AFCE26B9C5F6007CBCCE /* Gif.swift */,
@@ -289,14 +292,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		82B1C7FF26D9A4CF0021083B /* Future */ = {
-			isa = PBXGroup;
-			children = (
-				82B1C80026D9A60D0021083B /* FriendsPromise.swift */,
-			);
-			path = Future;
-			sourceTree = "<group>";
-		};
 		82E4018526AB9ADA0079B3F7 /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,7 +381,9 @@
 			files = (
 				828BD71126C1CC1C00953CBD /* hz.gif in Resources */,
 				1273D10F269377CE003F2E68 /* LaunchScreen.storyboard in Resources */,
+				820AA4D026DCED5A006E70D9 /* чпок.mp3 in Resources */,
 				82B316C326B61C740039A274 /* GoogleService-Info.plist in Resources */,
+				820AA4CE26DCEB75006E70D9 /* ps2.mp3 in Resources */,
 				8258BB6B26C5DE5B0080AFF9 /* spring2.mp3 in Resources */,
 				8258BB6926C5DC420080AFF9 /* spring.mp3 in Resources */,
 				1273D10C269377CE003F2E68 /* Assets.xcassets in Resources */,
@@ -445,7 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1273D177269CB9C6003F2E68 /* Data+PrettyJSON.swift in Sources */,
-				82B1C80126D9A60D0021083B /* FriendsPromise.swift in Sources */,
 				8270BA4826D5A864005CA02A /* FeedItemFooter.swift in Sources */,
 				8270BA4226D5A7AC005CA02A /* Feed.swift in Sources */,
 				823BB77C26B4D448009EDD8E /* FriendsFB.swift in Sources */,

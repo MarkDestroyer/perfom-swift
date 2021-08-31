@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--iMessanger X-->
+        <!--VKMessanger X-->
         <scene sceneID="tsO-QI-Yy7">
             <objects>
                 <tabBarController id="pMp-rK-AB5" customClass="MenuViewController" customModule="client_server_1347" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="iMessanger X" id="XCP-35-fXk"/>
+                    <navigationItem key="navigationItem" title="VKMessanger X" id="XCP-35-fXk"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cyn-xg-JDz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,8 +152,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Друзья" id="2Tf-xf-mGQ"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="uJa-Zk-h10">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="iKy-YW-CYO">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
@@ -575,7 +574,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ol-B9-Ip2">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ol-B9-Ip2" customClass="ImageSound" customModule="client_server_1347" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="350.5"/>
                                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                                             <constraints>
@@ -602,6 +601,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Лента" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="dEo-YP-Nbh"/>
                     <navigationItem key="navigationItem" title="Новости" id="2RW-4M-vg0"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="yOn-P5-yTN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3w-05-jSX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
