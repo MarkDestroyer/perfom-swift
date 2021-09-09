@@ -2,7 +2,6 @@ PODS:
   - Alamofire (5.4.3)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
-  - ExpandableLabel (0.5.2)
   - Firebase/Auth (8.3.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.3.0)
@@ -89,11 +88,11 @@ PODS:
   - SDWebImage/Core (5.11.1)
   - SwiftKeychainWrapper (4.0.1)
   - SwiftyJSON (5.0.1)
+  - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - ExpandableLabel
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
@@ -107,12 +106,12 @@ DEPENDENCIES:
   - SDWebImage
   - SwiftKeychainWrapper
   - SwiftyJSON
+  - TTTAttributedLabel
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
-    - ExpandableLabel
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -137,11 +136,11 @@ SPEC REPOS:
     - SDWebImage
     - SwiftKeychainWrapper
     - SwiftyJSON
+    - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
-  ExpandableLabel: c2fab6d27860c572d67134b30522a5917746171d
   Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
   FirebaseAuth: fd12c82de44e7ad3b821610c387b8251f03aa0f9
   FirebaseCore: a6dba751680d7033b9d3831e1cfc95ead0605118
@@ -166,7 +165,8 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 47cfbf365f93f96a94d2cd959b215a0012fd0b76
+PODFILE CHECKSUM: 5a704129682ada60e74160ffdb5e4771c19aa4f0
 
 COCOAPODS: 1.10.2
