@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class FeedItemTextTableViewCell: UITableViewCell {
     
     @IBOutlet weak var feedItemText: UILabel!
@@ -21,5 +22,11 @@ class FeedItemTextTableViewCell: UITableViewCell {
     
     func configure(text: String?) {
         feedItemText.text = text
+        //let str = "This is a Very Long Label"
+        let nsString = text as! NSString
+        if nsString.length >= 200
+        {
+            feedItemText.text = nsString.substring(with: NSRange(location: 0, length: nsString.length > 10 ? 10 : nsString.length))
+        }
     }
 }

@@ -221,7 +221,7 @@ extension FeedTableViewController: UITableViewDataSourcePrefetching {
                 guard let self = self else { return }
                 // Прикрепляем новости к cуществующим новостям
                 
-                guard let nextFrom = feed?.response.nextFrom else  {return}
+                guard let nextFrom = feed?.response.nextFrom else {return}
                 self.nextFrom = nextFrom
                 
                 guard let newItems = feed?.response.items else {return}

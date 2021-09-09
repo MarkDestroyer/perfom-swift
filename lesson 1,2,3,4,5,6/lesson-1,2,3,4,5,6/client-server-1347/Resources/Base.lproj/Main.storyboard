@@ -565,7 +565,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="feedItemText" destination="r4E-Zu-HjF" id="7Iu-hv-GXx"/>
+                                    <outlet property="feedItemText" destination="r4E-Zu-HjF" id="hCM-Du-491"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedItemPhotoCell" id="kuj-Ge-B5C" customClass="FeedItemPhotoTableViewCell" customModule="client_server_1347" customModuleProvider="target">

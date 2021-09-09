@@ -28,11 +28,11 @@ struct FeedResponse: Codable {
         case nextFrom = "next_from"
     }
     
-    init(items: [Item], profiles: [Profile], groups: [Group]) {
+    init(items: [Item], profiles: [Profile], groups: [Group], nextFrom: String) {
         self.items = items
         self.profiles = profiles
         self.groups = groups
-        self.nextFrom = ""
+        self.nextFrom = nextFrom
     }
 }
 

@@ -26,7 +26,7 @@ class FeedAPI {
             "access_token": session.token,
             "v": session.version,
             "filters": "post",
-            "count": 20,
+           // "count": 20,
             "start_from": nextFrom
         ]
         
@@ -103,7 +103,7 @@ class FeedAPI {
                 
                 let response = FeedResponse(items: vkItemsArray,
                                             profiles: vkProfilesArray,
-                                            groups: vkGroupsArray)
+                                            groups: vkGroupsArray, nextFrom: nextFrom)
                 let feed = Feed(response: response)
                 
                 completion(feed)
