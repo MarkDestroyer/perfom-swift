@@ -22,5 +22,4 @@ class FeedItemTextTableViewCell: UITableViewCell {
     func configure(text: String?) {
         feedItemText.text = text
     }
-
 }

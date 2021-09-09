@@ -153,6 +153,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Друзья" id="2Tf-xf-mGQ"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="iKy-YW-CYO">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
@@ -564,7 +565,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="feedItemText" destination="r4E-Zu-HjF" id="TSH-dP-RM1"/>
+                                    <outlet property="feedItemText" destination="r4E-Zu-HjF" id="7Iu-hv-GXx"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedItemPhotoCell" id="kuj-Ge-B5C" customClass="FeedItemPhotoTableViewCell" customModule="client_server_1347" customModuleProvider="target">
@@ -602,6 +603,7 @@
                     <tabBarItem key="tabBarItem" title="Лента" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="dEo-YP-Nbh"/>
                     <navigationItem key="navigationItem" title="Новости" id="2RW-4M-vg0"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="yOn-P5-yTN">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
