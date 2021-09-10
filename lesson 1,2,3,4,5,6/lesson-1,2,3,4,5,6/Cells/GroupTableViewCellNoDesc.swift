@@ -27,7 +27,7 @@ class GroupTableViewCellNoDesc: UITableViewCell {
         
         groupName.text = groupItem.name
         
-        membersCount.text =  "\(groupItem.membersCount?.formatted) подписчиков"
+        membersCount.text =  "\(groupItem.membersCount.formatted) подписчиков"
         
         AF.request(groupItem.imageURL, method: .get).responseImage { response in
             guard let image = response.value else { return }

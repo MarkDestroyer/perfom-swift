@@ -6,35 +6,30 @@
 //
 
 import Foundation
-import RealmSwift
 
 // MARK: - Main
 struct Groups: Codable {
-    let response: Response
+    let response: GroupResponse
 }
 
 // MARK: - Response
-struct Response: Codable {
+struct GroupResponse: Codable {
     let count: Int
     let items: [GroupItem]
 }
 
 // MARK: - Item
-class GroupItem: Object, Codable {
-    @objc dynamic var id: Int = 0
-    @objc dynamic var name: String = ""
-    @objc dynamic var groupDescription: String?
-    @objc dynamic var imageURL: String = ""
-    var membersCount: Int?
+class GroupItem: Codable {
+    var id: Int = 0
+    var name: String = ""
+    var groupDescription: String?
+    var imageURL: String = ""
+    var membersCount: Int = 0
 
     enum CodingKeys: String, CodingKey {
         case id, name
         case groupDescription = "description"
         case imageURL = "photo_100"
         case membersCount = "members_count"
-    }
-
-    override static func primaryKey() -> String? {
-        return "id"
     }
 }

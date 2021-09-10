@@ -10,7 +10,7 @@ import TTTAttributedLabel
 
 class FeedItemTextTableViewCell: UITableViewCell {
     
-    let kCharacterBeforReadMore =  50
+    let kCharacterBeforReadMore =  20
     let kReadMoreText           =  "...ReadMore"
     let kReadLessText           =  "...ReadLess"
     

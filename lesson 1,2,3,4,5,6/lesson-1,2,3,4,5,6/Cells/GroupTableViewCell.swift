@@ -33,7 +33,7 @@ class GroupTableViewCell: UITableViewCell {
             groupDescription.text = description
         }
         
-        groupMemebersCount.text =  "\(groupItem.membersCount?.formatted) подписчиков"
+        groupMemebersCount.text =  "\(groupItem.membersCount.formatted) подписчиков"
         
         AF.request(groupItem.imageURL, method: .get).responseImage { response in
             guard let image = response.value else { return }
