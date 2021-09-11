@@ -5,18 +5,18 @@
 //  Created by Марк Киричко on 08.08.2021.
 //
 
+import Foundation
 import Alamofire
 import SwiftyJSON
-
 
 class FeedAPI {
     
     let baseUrl = "https://api.vk.com/method"
     let method = "/newsfeed.get"
     
-    var params: Parameters = [:]
+    var params: Parameters
     
-    func get(nextFrom: String = "",startTime: Double? = nil,_ completion: @escaping (Feed?) -> ()) {
+    init() {
         
         let session = Session.instance
         
@@ -26,17 +26,26 @@ class FeedAPI {
             "access_token": session.token,
             "v": session.version,
             "filters": "post",
-           // "count": 20,
-            "start_from": nextFrom
+            "count": "50",
         ]
         
-        if let startTime = startTime {
-            params["start_time"] = startTime
-        }
+    }
+    
+    func get(startTime: TimeInterval? = nil, startFrom: String? = nil, _ completion: @escaping (Feed?) -> ()) {
         
         let url = baseUrl + method
         
+        if startTime != nil {
+            self.params["start_time"] = startTime
+        }
+        
+        if startFrom != nil {
+            self.params["start_from"] = startFrom
+        }
+        
         AF.request(url, method: .get, parameters: params).responseData { response in
+            
+            //print(response.request!)
             
             guard let data = response.data else { return }
             
@@ -47,7 +56,6 @@ class FeedAPI {
             let vkItemsJSONArr = json["response"]["items"].arrayValue
             let vkProfilesJSONArr = json["response"]["profiles"].arrayValue
             let vkGroupsJSONArr = json["response"]["groups"].arrayValue
-            
             let nextFrom = json["response"]["next_from"].stringValue
             
             var vkItemsArray: [Item] = []
@@ -98,12 +106,10 @@ class FeedAPI {
             }
             
             dispatchGroup.notify(queue: DispatchQueue.main) {
-                
-                
-                
                 let response = FeedResponse(items: vkItemsArray,
                                             profiles: vkProfilesArray,
-                                            groups: vkGroupsArray, nextFrom: nextFrom)
+                                            groups: vkGroupsArray,
+                                            nextFrom: nextFrom)
                 let feed = Feed(response: response)
                 
                 completion(feed)

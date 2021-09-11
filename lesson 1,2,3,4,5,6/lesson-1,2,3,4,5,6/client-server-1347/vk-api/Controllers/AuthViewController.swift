@@ -82,4 +82,3 @@ extension AuthViewController: WKNavigationDelegate {
         decisionHandler(.cancel)
     }
 }
-

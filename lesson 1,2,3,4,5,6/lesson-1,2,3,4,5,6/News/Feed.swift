@@ -38,12 +38,12 @@ struct FeedResponse: Codable {
 
 // MARK: - Group
 struct Group: Codable {
-    let id: Int?
-    let name, screenName: String?
-    let isClosed: Int?
-    let type: String?
+    let id: Int
+    let name, screenName: String
+    let isClosed: Int
+    let type: String
     let isAdmin, isMember, isAdvertiser: Int?
-    let photo50, photo100, photo200: String?
+    let photo50, photo100, photo200: String
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -61,19 +61,19 @@ struct Group: Codable {
 
 // MARK: - Item
 struct Item: Codable {
-    let sourceID: Int?
-    let date: TimeInterval?
+    let sourceID: Int
+    let date: TimeInterval
     let canDoubtCategory, canSetCategory: Bool?
     let postType, text: String?
     let markedAsAds: Int?
     let attachments: [Attachment]?
     let postSource: PostSource?
-    let comments: Comments?
-    let likes: Likes?
-    let reposts: Reposts?
+    let comments: Comments
+    var likes: feedLikes
+    let reposts: Reposts
     let views: Views?
     let postID: Int?
-    let type: String?
+    let type: String
     
     // MARK: - Computed properties.
     
@@ -81,9 +81,17 @@ struct Item: Codable {
         return self.text != nil && self.text != ""
     }
     
-    var hasPhoto604: Bool {
-        return self.attachments?[0].photo?.photo604 != nil
+    var hasPhoto: Bool {
+        return self.attachments?[0].photo?.photoAvailable != nil
     }
+    
+    var hasLink: Bool {
+        return self.attachments?[0].link?.url != nil
+    }
+    
+//    var attachedLinkIndex: Int? {
+//        return self.attachments?.firstIndex(where: { $0.type == "link" })
+//    }
     
     enum CodingKeys: String, CodingKey {
         case sourceID = "source_id"
@@ -103,27 +111,28 @@ struct Item: Codable {
 
 // MARK: - Attachment
 struct Attachment: Codable {
-    let type: String?
-    let photo: Photo?
+    let type: String
+    let photo: PhotoItem?
     let link: Link?
 }
 
 // MARK: - Link
 struct Link: Codable {
-    let url: String?
-    let photo: Photo?
+    let url: String
+    let title: String?
+    let photo: PhotoItem?
 }
 
 // MARK: - Photo
 struct Photo: Codable {
-    let albumID, date, id, ownerID: Int?
-    let hasTags: Bool?
+    let albumID, date, id, ownerID: Int
+    let hasTags: Bool
     let accessKey: String?
     let height: Int?
     let photo1280, photo130, photo604, photo75: String?
     let photo807: String?
     let postID: Int?
-    let text: String?
+    let text: String
     let userID, width: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -156,8 +165,8 @@ struct Comments: Codable {
 }
 
 // MARK: - Likes
-struct Likes: Codable {
-    let count, userLikes, canLike, canPublish: Int?
+struct feedLikes: Codable {
+    var count, userLikes, canLike, canPublish: Int?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -169,7 +178,7 @@ struct Likes: Codable {
 
 // MARK: - PostSource
 struct PostSource: Codable {
-    let type: String?
+    let type: String
 }
 
 // MARK: - Reposts
@@ -184,19 +193,19 @@ struct Reposts: Codable {
 
 // MARK: - Views
 struct Views: Codable {
-    let count: Int?
+    let count: Int
 }
 
 // MARK: - Profile
 struct Profile: Codable {
-    let firstName: String?
-    let id: Int?
-    let lastName: String?
-    let sex: Int?
+    let firstName: String
+    let id: Int
+    let lastName: String
+    let sex: Int
     let screenName: String?
-    let photo50, photo100: String?
-    let onlineInfo: OnlineInfo?
-    let online: Int?
+    let photo50, photo100: String
+    let onlineInfo: OnlineInfo
+    let online: Int
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
@@ -221,4 +230,3 @@ struct OnlineInfo: Codable {
         case isMobile = "is_mobile"
     }
 }
-

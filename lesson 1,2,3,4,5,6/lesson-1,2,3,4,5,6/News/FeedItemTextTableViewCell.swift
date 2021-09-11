@@ -6,17 +6,12 @@
 //
 
 import UIKit
-import TTTAttributedLabel
+import ActiveLabel
 
 class FeedItemTextTableViewCell: UITableViewCell {
     
-    let kCharacterBeforReadMore =  20
-    let kReadMoreText           =  "...ReadMore"
-    let kReadLessText           =  "...ReadLess"
-    
-    @IBOutlet weak var feedItemText: TTTAttributedLabel!
-    
-    
+    @IBOutlet weak var feedItemText: ActiveLabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -25,76 +20,62 @@ class FeedItemTextTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
-    
-    func readMore(readMore: Bool) {
-        feedItemText.showTextOnTTTAttributeLable(str: feedItemText.text as! String, readMoreText: kReadMoreText, readLessText: kReadLessText, font: nil, charatersBeforeReadMore: kCharacterBeforReadMore, activeLinkColor: UIColor.blue, isReadMoreTapped: readMore, isReadLessTapped: false)
-          }
-          func readLess(readLess: Bool) {
-            feedItemText.showTextOnTTTAttributeLable(str: feedItemText.text as! String, readMoreText: kReadMoreText, readLessText: kReadLessText, font: nil, charatersBeforeReadMore: kCharacterBeforReadMore, activeLinkColor: UIColor.blue, isReadMoreTapped: readLess, isReadLessTapped: true)
-          }
+    func configure(text: String?, expanded: Bool, readMoreHandler: @escaping () -> ()) {
+        
+        guard let text = text else { return }
 
-    func configure(text: String?) {
-        feedItemText.text = text
-        feedItemText.showTextOnTTTAttributeLable(str: text!, readMoreText: kReadMoreText, readLessText: kReadLessText, font: UIFont.init(name: "Helvetica-Bold", size: 24.0)!, charatersBeforeReadMore: kCharacterBeforReadMore, activeLinkColor: UIColor.blue, isReadMoreTapped: false, isReadLessTapped: false)
-        feedItemText.delegate = self
-    }
-}
-
-extension TTTAttributedLabel {
-      func showTextOnTTTAttributeLable(str: String, readMoreText: String, readLessText: String, font: UIFont?, charatersBeforeReadMore: Int, activeLinkColor: UIColor, isReadMoreTapped: Bool, isReadLessTapped: Bool) {
-
-        let text = str + readLessText
-        let attributedFullText = NSMutableAttributedString.init(string: text)
-        let rangeLess = NSString(string: text).range(of: readLessText, options: String.CompareOptions.caseInsensitive)
-//Swift 5
-       // attributedFullText.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.blue], range: rangeLess)
-        attributedFullText.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], range: rangeLess)
-
-        var subStringWithReadMore = ""
-        if text.count > charatersBeforeReadMore {
-          let start = String.Index(encodedOffset: 0)
-          let end = String.Index(encodedOffset: charatersBeforeReadMore)
-          subStringWithReadMore = String(text[start..<end]) + readMoreText
-        }
-
-        let attributedLessText = NSMutableAttributedString.init(string: subStringWithReadMore)
-        let nsRange = NSString(string: subStringWithReadMore).range(of: readMoreText, options: String.CompareOptions.caseInsensitive)
-        //Swift 5
-       // attributedLessText.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.blue], range: nsRange)
-        attributedLessText.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], range: nsRange)
-      //  if let _ = font {// set font to attributes
-      //   self.font = font
-      //  }
-        self.attributedText = attributedLessText
-        self.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : UIColor.blue]
-        //Swift 5
-       // self.linkAttributes = [NSAttributedStringKey.foregroundColor : UIColor.blue]
-        self.linkAttributes = [NSAttributedString.Key.foregroundColor : UIColor.blue]
-                self.addLink(toTransitInformation: ["ReadMore":"1"], with: nsRange)
-
-                if isReadMoreTapped {
-                  self.numberOfLines = 0
-                  self.attributedText = attributedFullText
-                  self.addLink(toTransitInformation: ["ReadLess": "1"], with: rangeLess)
-                }
-                if isReadLessTapped {
-                  self.numberOfLines = 3
-                  self.attributedText = attributedLessText
-                }
-              }
+        feedItemText.customize { label in
+            
+            if text.byWords.count > maxWordsCount && !expanded {
+                
+                label.text = String(describing: text.firstLine!)
+                label.text! += "\n\n" + readMore
+                
+            } else {
+                label.text = text
             }
-
-extension FeedItemTextTableViewCell: TTTAttributedLabelDelegate {
-  func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWithTransitInformation components: [AnyHashable : Any]!) {
-    if let _ = components as? [String: String] {
-      if let value = components["ReadMore"] as? String, value == "1" {
-        self.readMore(readMore: true)
-      }
-      if let value = components["ReadLess"] as? String, value == "1" {
-        self.readLess(readLess: false)
-      }
+            
+            let vkHashTag = ActiveType.custom(pattern: #"#\S+"#)
+            let readMoreType = ActiveType.custom(pattern: readMore)
+            
+            label.urlMaximumLength = 22
+            label.enabledTypes = [.url, vkHashTag, readMoreType]
+            
+            label.customColor[vkHashTag] = activeHashTagColor
+            label.customSelectedColor[vkHashTag] = activeHashTagColorSelected
+            
+            label.customColor[readMoreType] = activeURLColor
+            label.customSelectedColor[readMoreType] = activeURLColorSelected
+            
+            label.URLColor = activeURLColor
+            label.URLSelectedColor = activeURLColorSelected
+            
+            label.handleURLTap { url in
+                UIApplication.shared.open(url)
+            }
+            
+            label.handleCustomTap(for: readMoreType) { _ in
+                label.text = text
+                readMoreHandler()
+            }
+        }
     }
-  }
 }
+
+
+let maxWordsCount = 60
+let readMore = "Показать полностью..."
+
+let activeURLColor = UIColor(red: 41.0/255, green: 151.0/255, blue: 255.0/255, alpha: 1)
+let activeURLColorSelected = UIColor(red: 41.0/255, green: 151.0/255, blue: 255.0/255, alpha: 0.5)
+
+let activeHashTagColor = UIColor(red: 255.0/255, green: 123.0/255, blue: 114.0/255, alpha: 1)
+let activeHashTagColorSelected = UIColor(red: 255.0/255, green: 123.0/255, blue: 114.0/255, alpha: 0.5)
+
+let activeVkHashTagColor = UIColor(red: 138.0/255, green: 138.0/255, blue: 142.0/255, alpha: 1)
+let activeVkHashTagColorSelected = UIColor(red: 138.0/255, green: 138.0/255, blue: 142.0/255, alpha: 0.5)
+
+let imageCache = NSCache<NSString, UIImage>()
+let dateTimeCache = NSCache<NSNumber, NSString>()
+
 
