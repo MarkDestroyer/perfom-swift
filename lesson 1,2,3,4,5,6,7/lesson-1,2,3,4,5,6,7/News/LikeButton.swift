@@ -87,7 +87,7 @@ class LikeButton: UIButton {
                     self?.likesCount -= 1
                     return
                 }
-                
+       
                 self?.handlerLiked()
                 
             }

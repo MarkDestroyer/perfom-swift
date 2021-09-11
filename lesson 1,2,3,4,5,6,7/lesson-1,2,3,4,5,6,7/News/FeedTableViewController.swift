@@ -149,16 +149,16 @@ class FeedTableViewController: UITableViewController {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionFooter") as! FeedItemFooter
         let currentFeedItem = feedItems[section]
         
-        view.likeButton.configure(likesCount: currentFeedItem.likes.count!,
+        view.likeButton.configure(likesCount: currentFeedItem.likes.count,
                                   isLikedByMe: currentFeedItem.likes.userLikes == 1 ? true : false,
                                   itemID: currentFeedItem.postID ?? 0,
                                   ownerID: currentFeedItem.sourceID,
                                   completionHandlerLiked: {
-                                    self.feedItems[section].likes.count! += 1
+                                    self.feedItems[section].likes.count += 1
                                     self.feedItems[section].likes.userLikes = 1
                                   },
                                   completionHandlerUnLiked: {
-                                    self.feedItems[section].likes.count! -= 1
+                                    self.feedItems[section].likes.count -= 1
                                     self.feedItems[section].likes.userLikes = 0
                                   })
         
@@ -167,8 +167,8 @@ class FeedTableViewController: UITableViewController {
         var footerText = ""
         
         footerText += (currentFeedItem.views?.count ?? 0) > 0 ? "⊹ \(Int(currentFeedItem.views!.count).formatted)" : ""
-        footerText += currentFeedItem.reposts.count! > 0 ? "   |   ⌁ \(Int(currentFeedItem.reposts.count!).formatted)" : ""
-        footerText += currentFeedItem.comments.count! > 0 ? "   |   ℘ \(Int(currentFeedItem.comments.count!).formatted)" : ""
+        footerText += currentFeedItem.reposts.count > 0 ? "   |   ⌁ \(Int(currentFeedItem.reposts.count).formatted)" : ""
+        footerText += currentFeedItem.comments.count > 0 ? "   |   ℘ \(Int(currentFeedItem.comments.count).formatted)" : ""
         
         view.postInfo.text = footerText
         

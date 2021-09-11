@@ -5,7 +5,7 @@
 //  Created by Artur Igberdin on 12.07.2021.
 //
 
-import UIKit
+import Foundation
 
 class Session {
     
@@ -16,6 +16,10 @@ class Session {
     var userId: Int = 0
     var token: String = ""
     
-    let cliendId = "7900300"
-    var version = "5.68"
+    // My Client ID's
+    // 7937012 (main)
+    // 7938282 (reserve)
+    
+    let cliendId = "7938282"
+    let version = "5.131"
 }
